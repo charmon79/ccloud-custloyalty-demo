@@ -1,0 +1,67 @@
+[
+    {
+        "order_id": 1,
+        "user_id": 68,
+        "items": [
+            {"item_id": 1, "qty": 1},
+            {"item_id": 9, "qty": 1}
+        ],
+        "order_timestamp": {"$date": "2023-06-01T11:00:00.000Z"}
+    },
+    {
+        "order_id": 2,
+        "user_id": 54,
+        "items": [
+            {"item_id": 1, "qty": 1},
+            {"item_id": 3, "qty": 1},
+            {"item_id": 7, "qty": 2},
+            {"item_id": 9, "qty": 1}
+        ],
+        "order_timestamp": {"$date": "2023-07-01T12:00:00.000Z"}
+    },
+    {
+        "order_id": 3,
+        "user_id": 77,
+        "items": [
+            {"item_id": 1, "qty": 1}
+        ],
+        "order_timestamp": {"$date": "2023-07-02T10:00:00.000Z"}
+    },
+    {
+        "order_id": 4,
+        "user_id": 7,
+        "items": [
+            {"item_id": 8, "qty": 2}
+        ],
+        "order_timestamp": {"$date": "2023-07-03T08:00:00.000Z"}
+    },
+    {
+        "order_id": 5,
+        "user_id": 17,
+        "items": [
+            {"item_id": 3, "qty": 1},
+            {"item_id": 9, "qty": 1}
+        ],
+        "order_timestamp": {"$date": "2023-07-10T11:00:00.000Z"}
+    },
+    {
+        "order_id": 6,
+        "user_id": 54,
+        "items": [
+            {"item_id": 3, "qty": 1},
+            {"item_id": 9, "qty": 1}
+        ],
+        "order_timestamp": {"$date": "2023-07-11T12:30:00.000Z"}
+    },
+    {
+        "order_id": 7,
+        "user_id": 54,
+        "items": [
+            {"item_id": 6, "qty": 1},
+            {"item_id": 3, "qty": 1},
+            {"item_id": 7, "qty": 1},
+            {"item_id": 8, "qty": 1}
+        ],
+        "order_timestamp": {"$date": "2023-07-15T12:30:00.000Z"}
+    }
+]

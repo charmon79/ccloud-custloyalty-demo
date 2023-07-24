@@ -1,0 +1,33 @@
+[
+    {
+        "database": "coffeeshop",
+        "collection": "users",
+        "count": 100,
+        "content": {
+            "user_id": {
+                "type": "int",
+                "min": 1,
+                "max": 100,
+                "maxDistinctValue": 100,
+                "nullPercentage": 0
+            },
+            "name": {
+                "type": "faker",
+                "method": "Name",
+                "nullPercentage": 0,
+                "maxDistinctValue": 100
+            },
+            "email": {
+                "type": "faker",
+                "method": "Email",
+                "nullPercentage": 0,
+                "maxDistinctValue": 100
+            },
+            "gender": {
+                "type": "faker",
+                "method": "Gender",
+                "nullPercentage": 0
+            }
+        }
+    }
+]

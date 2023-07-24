@@ -1,0 +1,182 @@
+[
+    {
+        "item_id": 1,
+        "name": "Southwest Caesar Salad with Chicken",
+        "category": "Salad",
+        "price": 12.99,
+        "nutrition": {
+            "calories": 630,
+            "fat_calories": 430,
+            "fat_g": 48.0,
+            "sat_fat_g": 10.0,
+            "trans_fat_g": 1.0,
+            "cholesterol_g": 0.120,
+            "sodium_g": 0.98,
+            "carbs_g": 22.0,
+            "fiber_g": 8.0,
+            "sugars_g": 4.0,
+            "protein_g": 32.0,
+            "caffeine_g": 0.0
+        }
+    },
+    {
+        "item_id": 2,
+        "name": "Green Goddess Cobb Salad with Chicken",
+        "category": "Salad",
+        "price": 13.39,
+        "nutrition": {
+            "calories": 500,
+            "fat_calories": 250,
+            "fat_g": 28.0,
+            "sat_fat_g": 6.0,
+            "trans_fat_g": 0.0,
+            "cholesterol_g": 0.270,
+            "sodium_g": 0.94,
+            "carbs_g": 27.0,
+            "fiber_g": 8.0,
+            "sugars_g": 13.0,
+            "protein_g": 39.0,
+            "caffeine_g": 0.0
+        }
+    },
+    {
+        "item_id": 3,
+        "name": "Fuji Apple Salad with Chicken",
+        "category": "Salad",
+        "price": 12.99,
+        "nutrition": {
+            "calories": 560,
+            "fat_calories": 300,
+            "fat_g": 34.0,
+            "sat_fat_g": 7.0,
+            "trans_fat_g": 0.0,
+            "cholesterol_g": 0.085,
+            "sodium_g": 0.75,
+            "carbs_g": 38.0,
+            "fiber_g": 6.0,
+            "sugars_g": 22.0,
+            "protein_g": 30.0,
+            "caffeine_g": 0.0
+        }
+    },
+    {
+        "item_id": 4,
+        "name": "The Signature Take Chicken Sandwich",
+        "category": "Sandwich",
+        "price": 13.19,
+        "nutrition": {
+            "calories": 560,
+            "fat_calories": 260,
+            "fat_g": 29.0,
+            "sat_fat_g": 10.0,
+            "trans_fat_g": 0.0,
+            "cholesterol_g": 0.160,
+            "sodium_g": 1.14,
+            "carbs_g": 41.0,
+            "fiber_g": 2.0,
+            "sugars_g": 7.0,
+            "protein_g": 36.0,
+            "caffeine_g": 0.0
+        }
+    },
+    {
+        "item_id": 5,
+        "name": "Roasted Turkey & Avocado BLT",
+        "category": "Sandwich",
+        "price": 13.19,
+        "nutrition": {
+            "calories": 940,
+            "fat_calories": 480,
+            "fat_g": 53.0,
+            "sat_fat_g": 10.0,
+            "trans_fat_g": 0.5,
+            "cholesterol_g": 0.100,
+            "sodium_g": 1.84,
+            "carbs_g": 73.0,
+            "fiber_g": 8.0,
+            "sugars_g": 5.0,
+            "protein_g": 44.0,
+            "caffeine_g": 0.0
+        }
+    },
+    {
+        "item_id": 6,
+        "name": "Deli Turkey Sandwich",
+        "category": "Sandwich",
+        "price": 9.89,
+        "nutrition": {
+            "calories": 590,
+            "fat_calories": 160,
+            "fat_g": 17.0,
+            "sat_fat_g": 3.0,
+            "trans_fat_g": 0.0,
+            "cholesterol_g": 0.055,
+            "sodium_g": 1.74,
+            "carbs_g": 76.0,
+            "fiber_g": 4.0,
+            "sugars_g": 8.0,
+            "protein_g": 35.0,
+            "caffeine_g": 0.0
+        }
+    },
+    {
+        "item_id": 7,
+        "name": "Cafe Blend Dark Roast Coffee",
+        "category": "Beverage",
+        "price": 2.89,
+        "nutrition": {
+            "calories": 15,
+            "fat_calories": 0,
+            "fat_g": 0.0,
+            "sat_fat_g": 0.0,
+            "trans_fat_g": 0.0,
+            "cholesterol_g": 0.0,
+            "sodium_g": 0.01,
+            "carbs_g": 3.0,
+            "fiber_g": 0.0,
+            "sugars_g": 0.0,
+            "protein_g": 1.0,
+            "caffeine_g": 214.0
+        }
+    },
+    {
+        "item_id": 8,
+        "name": "Madagascar Vanilla Cream Cold Brew",
+        "category": "Beverage",
+        "price": 4.19,
+        "nutrition": {
+            "calories": 190,
+            "fat_calories": 100,
+            "fat_g": 11.0,
+            "sat_fat_g": 7.0,
+            "trans_fat_g": 0.0,
+            "cholesterol_g": 0.035,
+            "sodium_g": 0.05,
+            "carbs_g": 22.0,
+            "fiber_g": 0.0,
+            "sugars_g": 17.0,
+            "protein_g": 3.0,
+            "caffeine_g": 97.0
+        }
+    },
+    {
+        "item_id": 9,
+        "name": "Mango Yuzu Citrus - With Guarana & Caffeine",
+        "category": "Beverage",
+        "price": 4.09,
+        "nutrition": {
+            "calories": 210,
+            "fat_calories": 0,
+            "fat_g": 0.0,
+            "sat_fat_g": 0.0,
+            "trans_fat_g": 0.0,
+            "cholesterol_g": 0.0,
+            "sodium_g": 0.01,
+            "carbs_g": 52.0,
+            "fiber_g": 0.0,
+            "sugars_g": 50.0,
+            "protein_g": 0.0,
+            "caffeine_g": 157.0
+        }
+    }
+]
