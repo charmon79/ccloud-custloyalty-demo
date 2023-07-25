@@ -3,3 +3,4 @@
 **.tfstate
 **.tfstate.backup
 run.sh
+src/add-orders.sh
