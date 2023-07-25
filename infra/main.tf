@@ -65,7 +65,7 @@ resource "confluent_role_binding" "sa-demo-kafka-admin" {
 resource "confluent_role_binding" "sa-demo-sr-admin" {
   principal   = "User:${confluent_service_account.sa-demo.id}"
   role_name   = "ResourceOwner"
-  crn_pattern = confluent_schema_registry_cluster.sr.resource_name
+  crn_pattern = "${confluent_schema_registry_cluster.sr.resource_name}/subject=*"
 }
 
 ########################################################################################################
@@ -144,7 +144,7 @@ resource "confluent_connector" "bigquery_sink" {
   }
 
   config_sensitive = {
-    "connection.password" = var.mongodb_config.password
+    "keyfile"                  = var.bigquery_config.keyfile
   }
 
   config_nonsensitive = {
@@ -157,7 +157,6 @@ resource "confluent_connector" "bigquery_sink" {
     "partitioning.type"        = "NONE"
     "project"                  = var.bigquery_config.project
     "datasets"                 = var.bigquery_config.datasets
-    "keyfile"                  = var.bigquery_config.keyfile
     "topics"                   = "orders_enriched"
     "input.data.format"        = "AVRO"
     "input.key.format"         = "STRING"

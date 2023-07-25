@@ -96,24 +96,25 @@ EMIT CHANGES
 */
 CREATE STREAM ORDERS_ENRICHED
 WITH (
-    KAFKA_TOPIC = 'ksql.coffeeshop.orders_enriched',
+    KAFKA_TOPIC = 'orders_enriched',
     KEY_FORMAT = 'KAFKA',
     VALUE_FORMAT = 'AVRO',
     PARTITIONS = 1
 )
 AS SELECT
     O.ORDER_ID,
-    O.USER_ID USER_ID,
-    U.NAME USER_NAME,
+    AS_VALUE(U.USER_ID) AS USER_ID,
+    U.NAME AS USER_NAME,
     U.EMAIL,
     U.GENDER,
     O.ORDER_TIMESTAMP,
-    O.ITEM_ID ITEM_ID,
+    P.ITEM_ID AS ITEM_ID_KEY, -- 
+    AS_VALUE(P.ITEM_ID) AS ITEM_ID,
     O.QTY,
-    P.NAME ITEM_NAME,
+    P.NAME AS ITEM_NAME,
     P.CATEGORY,
-    P.PRICE UNIT_PRICE,
-    (P.PRICE * O.QTY) TOTAL_PRICE
+    P.PRICE AS UNIT_PRICE,
+    (P.PRICE * O.QTY) AS TOTAL_PRICE
 FROM ORDERS_EXPLODED O
 INNER JOIN USERS U ON O.USER_ID = U.USER_ID
 INNER JOIN PRODUCTS P ON O.ITEM_ID = P.ITEM_ID
@@ -121,28 +122,34 @@ EMIT CHANGES
 ;
 
 /*
-    Let's imagine that after every 5 beverages a customer orders, their next
-    beverage is free.
+    Let's imagine that after every 5 orders, their next beverage is free.
 
-    We can automatically emit an event after 5 beverage purchases to indicate
-    that the next one is free. By using a Table, we can also refer to this
+    We can automatically emit an event after 5 orders to indicate
+    that the customer is entitled to a free beverage on their next visit.
+    Since this will emit an event to the 'free_drink_rewards' topic,
+    that topic can be consumed to notify customers & issue reward coupons
+    instantly once they qualify.
+    
+    By using a Table, we can also refer to this
     as a materialized view of where each customer currently stands toward
-    their next free drink.
+    their next free drink. Applications could look up a customer's reward
+    status using the ksqlDB API, or we could sink this to a database
+    for applications to perform lookups against.
 */
 
-CREATE TABLE BEVERAGE_LOYALTY_STATUS
+CREATE TABLE FREE_DRINK_REWARDS
 WITH (
-    KAFKA_TOPIC = 'beverage_loyalty_status',
+    KAFKA_TOPIC = 'free_drink_rewards',
     KEY_FORMAT = 'KAFKA',
     VALUE_FORMAT = 'AVRO',
     PARTITIONS = 1
 )
 AS SELECT
   USER_ID,
-  COUNT(*) AS TOTAL,
+  COUNT(*) AS TOTAL_ORDERS,
   (COUNT(*) % 6) AS CURRENT_SEQUENCE,
-  (COUNT(*) % 6) = 5 AS NEXT_ONE_FREE
-FROM ORDERS_ENRICHED
-WHERE CATEGORY = 'Beverage'
+  (COUNT(*) % 6) = 5 AS FREE_DRINK_EARNED
+FROM ORDERS_RAW
 GROUP BY USER_ID
-EMIT CHANGES;
+EMIT CHANGES
+;
