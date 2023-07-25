@@ -134,36 +134,40 @@ resource "confluent_connector" "mongo_source" {
 
 ########################################################################################################
 # Create the Google BigQuery Sink Connector
+#
+# (This needs to be done AFTER the ksqlDB queries have been deployed to create
+# the orders_enriched topic. Uncomment this section & run terraform apply again after deploying the
+# ksqlDB queries in ksqldb_queries.sql)
 ########################################################################################################
-resource "confluent_connector" "bigquery_sink" {
-  environment {
-    id = confluent_environment.env.id
-  }
-  kafka_cluster {
-    id = confluent_kafka_cluster.kafka.id
-  }
+# resource "confluent_connector" "bigquery_sink" {
+#   environment {
+#     id = confluent_environment.env.id
+#   }
+#   kafka_cluster {
+#     id = confluent_kafka_cluster.kafka.id
+#   }
 
-  config_sensitive = {
-    "keyfile"                  = var.bigquery_config.keyfile
-  }
+#   config_sensitive = {
+#     "keyfile"                  = var.bigquery_config.keyfile
+#   }
 
-  config_nonsensitive = {
-    "name"                     = "snk.bigquery.coffeeshop"
-    "connector.class"          = "BigQuerySink"
-    "kafka.auth.mode"          = "SERVICE_ACCOUNT"
-    "kafka.service.account.id" = confluent_service_account.sa-demo.id
-    "auto.create.tables"       = true
-    "auto.update.schemas"      = true
-    "partitioning.type"        = "NONE"
-    "project"                  = var.bigquery_config.project
-    "datasets"                 = var.bigquery_config.datasets
-    "topics"                   = "orders_enriched"
-    "input.data.format"        = "AVRO"
-    "input.key.format"         = "STRING"
-    "tasks.max"                = 1
-  }
+#   config_nonsensitive = {
+#     "name"                     = "snk.bigquery.coffeeshop"
+#     "connector.class"          = "BigQuerySink"
+#     "kafka.auth.mode"          = "SERVICE_ACCOUNT"
+#     "kafka.service.account.id" = confluent_service_account.sa-demo.id
+#     "auto.create.tables"       = true
+#     "auto.update.schemas"      = true
+#     "partitioning.type"        = "NONE"
+#     "project"                  = var.bigquery_config.project
+#     "datasets"                 = var.bigquery_config.datasets
+#     "topics"                   = "orders_enriched"
+#     "input.data.format"        = "AVRO"
+#     "input.key.format"         = "STRING"
+#     "tasks.max"                = 1
+#   }
 
-  depends_on = [
-    confluent_schema_registry_cluster.sr
-  ]
-}
+#   depends_on = [
+#     confluent_schema_registry_cluster.sr
+#   ]
+# }
